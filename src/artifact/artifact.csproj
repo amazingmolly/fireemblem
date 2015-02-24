@@ -30,7 +30,7 @@
     <Content Include="main\artifact\character\00.svg" />
     <Content Include="main\artifact\character\01.svg" />
     <Content Include="main\artifact\character\02.svg" />
-    <None Include="main\artifact\hero\ally.json" />
+    <Content Include="main\artifact\hero\ally.json" />
     <Content Include="main\artifact\character\50.svg" />
     <Content Include="main\artifact\tile\b0.svg" />
     <Content Include="main\artifact\tile\b1.svg" />
@@ -44,7 +44,6 @@
     <Content Include="main\manifest.json" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="main\artifact.bin" />
     <Content Include="main\artifact\chapter\01.json" />
   </ItemGroup>
   <ItemGroup>
