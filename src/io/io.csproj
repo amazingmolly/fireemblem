@@ -17,7 +17,17 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <TypeScriptCompile Include="..\core\main\filesystem.d.ts">
+      <Link>main\filesystem.d.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\core\main\filewriter.d.ts">
+      <Link>main\filewriter.d.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="main\io\FileHelper.ts" />
+    <TypeScriptCompile Include="main\io\Manifest.ts" />
+    <TypeScriptCompile Include="main\io\Storage.ts" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>
@@ -45,9 +55,11 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptRemoveComments>True</TypeScriptRemoveComments>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
     <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptOutFile>main/$(RootNamespace).js</TypeScriptOutFile>
+    <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptRemoveComments>true</TypeScriptRemoveComments>

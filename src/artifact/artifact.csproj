@@ -20,6 +20,35 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="index.html" />
+    <Content Include="main\artifact\avatar\ally.svg" />
+    <Content Include="main\artifact\avatar\enemy.svg" />
+    <Content Include="main\artifact\bgm\main.mp3" />
+    <Content Include="main\artifact\bg\bg-1680x945.jpg" />
+    <Content Include="main\artifact\bg\bg-1920x1080.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="main\artifact\character\00.svg" />
+    <Content Include="main\artifact\character\01.svg" />
+    <Content Include="main\artifact\character\02.svg" />
+    <None Include="main\artifact\hero\ally.json" />
+    <Content Include="main\artifact\character\50.svg" />
+    <Content Include="main\artifact\tile\b0.svg" />
+    <Content Include="main\artifact\tile\b1.svg" />
+    <Content Include="main\artifact\tile\b2.svg" />
+    <Content Include="main\artifact\tile\b3.svg" />
+    <Content Include="main\artifact\tile\b4.svg" />
+    <Content Include="main\artifact\tile\b5.svg" />
+    <Content Include="main\artifact\tile\b6.svg" />
+    <Content Include="main\artifact\tile\b7.svg" />
+    <Content Include="main\artifact\tile\b8.svg" />
+    <Content Include="main\manifest.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="main\artifact.bin" />
+    <Content Include="main\artifact\chapter\01.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="main\artifact\main\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
@@ -48,9 +77,11 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptRemoveComments>True</TypeScriptRemoveComments>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
     <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptOutFile>main/$(RootNamespace).js</TypeScriptOutFile>
+    <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
