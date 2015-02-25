@@ -69,7 +69,7 @@ module io {
             if (root instanceof Array) {
                 var offset = (<number[]>root)[0],
                     size = (<number[]>root)[1];
-                FileHelper.read(this.detectType(path), this.artifact, offset, size, path,
+                FileHelper.read(path.split('.').pop(), this.artifact, offset, size, path,
                     (path, data) => {
                         this.content[path] = data;
                         this.counter--;
@@ -80,23 +80,6 @@ module io {
                     var obj = root[name];
                     this.loadOne(obj, `${path}/${name}`);
                 }
-            }
-        }
-
-        private detectType(path: string): ArtifactType {
-            var ext = path.split('.').pop();
-            switch (ext) {
-                case 'mp3':
-                    return ArtifactType.Binary;
-                case 'js':
-                case 'json':
-                    return ArtifactType.Text;
-                case 'png':
-                case 'jpg':
-                case 'svg':
-                    return ArtifactType.Base64;
-                default:
-                    throw new Error(`Unknown extension: ${ext}`);
             }
         }
 

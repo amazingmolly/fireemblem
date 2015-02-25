@@ -47,7 +47,7 @@
     <Content Include="main\artifact\chapter\01.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="main\artifact\main\" />
+    <Folder Include="main\artifact\bin\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>

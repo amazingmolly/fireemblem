@@ -28,8 +28,22 @@ namespace Noria.FireEmblem.Resource
             {
                 foreach (var file in files)
                 {
-                    var buff = File.ReadAllBytes(file);
-                    bs.Write(buff);
+                    byte[] buff = null;
+
+                    if (file.EndsWith(".js"))
+                    {
+                        // change sourceMap
+                        buff = ReadAndUpdateSourceMap(file);
+                        bs.Write(buff);
+
+                        // test
+                        //File.WriteAllBytes(file + ".cc", buff);
+                    }
+                    else
+                    {
+                        buff = File.ReadAllBytes(file);
+                        bs.Write(buff);
+                    }
 
                     ProcessManifest(res, path, file, offset, buff.Length);
 
@@ -42,13 +56,42 @@ namespace Noria.FireEmblem.Resource
             Console.WriteLine("done.");
         }
 
+        // change sourceMap from /*.map to /main/*.map
+        private static byte[] ReadAndUpdateSourceMap(string file)
+        {
+            var lines = File.ReadAllLines(file, Encoding.UTF8);
+            var last = lines.Last();
+            if (!last.StartsWith("//#"))
+            {
+                throw new ApplicationException("Missing source map; " + file);
+            }
+
+            var cc = last.Split('=');
+            last = cc[0] + "=main/" + cc[1];
+
+            using (var ms = new MemoryStream())
+            {
+                using (var bw = new BinaryWriter(ms))
+                {
+                    foreach (var line in lines.Take(lines.Length - 1))
+                    {
+                        bw.Write(Encoding.UTF8.GetBytes(line));
+                        bw.Write('\n');
+                    }
+                    bw.Write(Encoding.UTF8.GetBytes(last));
+                }
+
+                return ms.ToArray();
+            }
+        }
+
         private static void ProcessManifest(JToken res, string path, string file, int offset, int size)
         {
             var token = file.Substring(path.Length + 1);
             var tokens = token.Split('\\');
             var name = tokens.Last();
 
-          
+
             JToken leaf = res["content"];
 
             foreach (var ns in tokens.Take(tokens.Length - 1))

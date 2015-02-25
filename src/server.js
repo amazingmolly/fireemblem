@@ -12,7 +12,7 @@ var url = require('url'),
 
 
 // targets
-var frontend = ['ai', 'artifact', 'audio', 'core', 'io', 'loader', 'scene', 'surface'],
+var frontend = ['ai', 'artifact', 'audio', 'core', 'io', 'loader', 'scene', 'surface', 'game'],
     backend = { module: 'backend', root: 'http://localhost:25001' },
     port = 15000;
 

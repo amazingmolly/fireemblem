@@ -21,6 +21,7 @@
     <TypeScriptCompile Include="..\core\main\core.d.ts">
       <Link>main\core.d.ts</Link>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="main\audio\DirectSoundDevice.ts" />
     <TypeScriptCompile Include="main\audio\Sound.ts" />
   </ItemGroup>
   <PropertyGroup>
@@ -62,6 +63,6 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <PropertyGroup>
-    <PostBuildEvent>copy /y $(ProjectDir)main\$(RootNamespace).js $(ProjectDir)..\artifact\main\artifact\main\</PostBuildEvent>
+    <PostBuildEvent>copy /y $(ProjectDir)main\$(RootNamespace).js $(ProjectDir)..\artifact\main\artifact\bin\</PostBuildEvent>
   </PropertyGroup>
 </Project>

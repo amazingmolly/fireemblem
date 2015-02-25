@@ -13,6 +13,4 @@
             new surface.DirectSurface().play();
         }
     }
-
-    new App((<any>window).fe.res).run();
 }

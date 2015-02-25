@@ -117,21 +117,28 @@ module loader {
         private launchGame(): void {
             this.progress = 'Initializing game...';
 
-
-            (<any>window).fe = { res: this.res };
-
             [
-                '/main/core.js',
-                '/main/surface.js',
-                '/main/audio.js',
-                '/main/scene.js',
-                '/main/ai.js',
-                '/main/game.js'
+                '/bin/core.js',
+                '/bin/surface.js',
+                '/bin/audio.js',
+                '/bin/scene.js',
+                '/bin/ai.js',
+                '/bin/game.js'
             ].forEach((it) => {
-                eval(this.res.get(it))
+                //eval(this.res.get(it))
+                var script = document.createElement('script');
+                script.text = this.res.get(it);
+                document.querySelector('head').appendChild(script);
             });
 
-            //new (<any>window).game.App(this.res).run();
+            // call the game entry point
+            new (<any>window).game.App(this.res).run();
+
+            // test
+            //var cc = new Image();
+            //cc.src = this.res.get('/avatar/enemy.svg');
+            //this.context.drawImage(cc, 0, 0);
+
             
             // stop splash screen
             this.stopped = true;
