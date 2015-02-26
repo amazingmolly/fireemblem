@@ -21,7 +21,14 @@
     <TypeScriptCompile Include="..\core\main\core.d.ts">
       <Link>main\core.d.ts</Link>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="..\core\main\MediaStream.d.ts">
+      <Link>main\MediaStream.d.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\core\main\waa.d.ts">
+      <Link>main\waa.d.ts</Link>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="main\audio\DirectSoundDevice.ts" />
+    <TypeScriptCompile Include="main\audio\DirectSound.ts" />
     <TypeScriptCompile Include="main\audio\Sound.ts" />
   </ItemGroup>
   <PropertyGroup>

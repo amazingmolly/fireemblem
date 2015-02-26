@@ -1,5 +1,5 @@
 ﻿module surface {
-    export class DirectSurface {
+    export class DirectSurfaceDevice {
         public play(): void {
             console.log("surface.play");
         }
