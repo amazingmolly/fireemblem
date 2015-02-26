@@ -1,25 +1,26 @@
 ﻿module game {
     import Manifest = io.Manifest;
-    import DirectSoundDevice = audio.DirectSoundDevice;
-    import DirectSurfaceDevice = surface.DirectSurfaceDevice;
+    import ResourceService = service.ResourceService;
+    import BgmService = service.BgmService;
 
     export class App {
 
-        private manifest: Manifest;
-        private dsd: DirectSoundDevice;
-        private dfd: DirectSurfaceDevice;
-
         public constructor(manifest: Manifest) {
-            this.manifest = manifest;
-            this.dsd = new DirectSoundDevice();
+            ResourceService.instance = manifest;
         }
 
         public run(): void {
             console.log("Game is running!");
 
-            //new surface.DirectSurface().play();
-            var bgm = '/bgm/main.mp3';
-            this.dsd.createSound(this.manifest.get(bgm), bgm, true).play();
+            //// infinite loop
+            //var bgm = [
+            //    () => { BgmService.instance.playMusic('/bgm/sherlock.mp3'); setTimeout(bgm[1], 5000); },
+            //    () => { BgmService.instance.playMusic('/bgm/alley.mp3'); setTimeout(bgm[0], 4000); }
+            //];
+            //bgm[0]();
+
+
+            BgmService.instance.playMusic('/bgm/alley.mp3');
         }
     }
 }

@@ -31,6 +31,33 @@
       <Link>main\surface.d.ts</Link>
     </TypeScriptCompile>
     <TypeScriptCompile Include="main\game\App.ts" />
+    <TypeScriptCompile Include="main\game\service\BgmService.ts" />
+    <TypeScriptCompile Include="main\game\service\ResourceService.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ai\ai.csproj">
+      <Project>{cd207b7c-d68c-4586-92cc-00ed53c3d3e4}</Project>
+      <Name>ai</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\audio\audio.csproj">
+      <Project>{502b047b-a9db-4419-86bb-a527cfbcfe86}</Project>
+      <Name>audio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\core\core.csproj">
+      <Project>{9ea86e95-f2d0-4570-8cc4-56f0ee64517e}</Project>
+      <Name>core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\scene\scene.csproj">
+      <Project>{4449ff58-a244-4053-8f09-a6e7cd6e2955}</Project>
+      <Name>scene</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\surface\surface.csproj">
+      <Project>{3168b171-409e-421f-a4b4-1b296500761e}</Project>
+      <Name>surface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="main\game\stage\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>

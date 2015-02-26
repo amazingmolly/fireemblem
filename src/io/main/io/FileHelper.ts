@@ -40,7 +40,7 @@
         private static getArtifactType(extension: string): ArtifactType {
             switch (extension) {
                 case 'mp3':
-                    return { mime: 'audio/mpeg', type: BlobStorage.Binary };
+                    return { mime: 'audio/mp3', type: BlobStorage.Binary };
                 case 'js':
                     return { mime: 'application/javascript', type: BlobStorage.Text };
                 case 'json':
