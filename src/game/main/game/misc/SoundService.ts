@@ -1,10 +1,14 @@
-﻿module game.service {
+﻿module game.misc {
     import Sound = audio.Sound;
     import DirectSoundDevice = audio.DirectSoundDevice;
 
-    export class BgmService {
-        public static instance: BgmService = new BgmService();
+    export class SoundService {
+        private context: GameContext;
         private playingMusic: Sound;
+
+        public constructor(context: GameContext) {
+            this.context = context;
+        }
 
         public playMusic(name: string): void {
             if (this.playingMusic != null) {
@@ -19,7 +23,7 @@
         }
 
         private get(name: string, loop: boolean): Sound {
-            return DirectSoundDevice.instance.createSound(ResourceService.instance.get(name), name, loop);
+            return DirectSoundDevice.instance.createSound(this.context.getManifest().get(name), name, loop);
         }
     }
 } 

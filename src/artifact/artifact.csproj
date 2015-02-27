@@ -22,15 +22,15 @@
     <Content Include="index.html" />
     <Content Include="main\artifact\avatar\ally.svg" />
     <Content Include="main\artifact\avatar\enemy.svg" />
-    <Content Include="main\artifact\bgm\alley.mp3" />
-    <Content Include="main\artifact\bgm\sherlock.mp3" />
-    <Content Include="main\artifact\bg\bg-1680x945.jpg" />
-    <Content Include="main\artifact\bg\bg-1920x1080.jpg" />
+    <Content Include="main\artifact\bgm\ally.mp3" />
+    <Content Include="main\artifact\bgm\main-menu.mp3" />
+    <Content Include="main\bg\wall.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="main\artifact\character\00.svg" />
     <Content Include="main\artifact\character\01.svg" />
     <Content Include="main\artifact\character\02.svg" />
+    <Content Include="main\artifact\effect\game-start.mp3" />
     <Content Include="main\artifact\hero\ally.json" />
     <Content Include="main\artifact\character\50.svg" />
     <Content Include="main\artifact\tile\b0.svg" />

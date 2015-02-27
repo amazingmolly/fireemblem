@@ -31,8 +31,18 @@
       <Link>main\surface.d.ts</Link>
     </TypeScriptCompile>
     <TypeScriptCompile Include="main\game\App.ts" />
-    <TypeScriptCompile Include="main\game\service\BgmService.ts" />
-    <TypeScriptCompile Include="main\game\service\ResourceService.ts" />
+    <TypeScriptCompile Include="main\game\GameContext.ts" />
+    <TypeScriptCompile Include="main\game\save\StateService.ts" />
+    <TypeScriptCompile Include="main\game\misc\SoundService.ts" />
+    <TypeScriptCompile Include="main\game\misc\ResolutionMonitor.ts" />
+    <TypeScriptCompile Include="main\game\misc\ResourceService.ts" />
+    <TypeScriptCompile Include="main\game\misc\SurfaceHolder.ts" />
+    <TypeScriptCompile Include="main\game\stage\Dungeon.ts" />
+    <TypeScriptCompile Include="main\game\stage\Continent.ts" />
+    <TypeScriptCompile Include="main\game\stage\Battlefield.ts" />
+    <TypeScriptCompile Include="main\game\stage\Menu.ts" />
+    <TypeScriptCompile Include="main\game\stage\Stage.ts" />
+    <TypeScriptCompile Include="main\game\stage\StageFactory.ts" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ai\ai.csproj">
@@ -56,9 +66,7 @@
       <Name>surface</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="main\game\stage\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>

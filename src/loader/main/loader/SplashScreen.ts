@@ -67,9 +67,9 @@ module loader {
         }
 
         private drawLogo(): void {
-            this.context.font = "2.5em Calibri";
+            this.context.font = "3em Calibri";
             this.context.fillStyle = 'white';
-            this.context.fillText('FIRE EMBLEM II', this.root.width / 2 - 100, this.root.height / 2 - 30);
+            this.context.fillText('FIRE EMBLEM II', this.root.width / 2 - 120, this.root.height / 2 - 30);
         }
 
         private drawProgress(): void {
@@ -127,12 +127,13 @@ module loader {
             ].forEach((it) => {
                 //eval(this.res.get(it))
                 var script = document.createElement('script');
+                script.id = it;
                 script.text = this.res.get(it);
                 document.querySelector('head').appendChild(script);
             });
 
             // call the game entry point
-            new (<any>window).game.App(this.res).run();
+            new (<any>window).game.App(this.res, this.context).run();
 
             // test
             //var cc = new Image();
