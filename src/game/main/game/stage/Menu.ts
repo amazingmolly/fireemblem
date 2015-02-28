@@ -8,6 +8,7 @@ module game.stage {
         private context: GameContext;
         private surface: Surface;
 
+        private flame: Spirit;
         private logo: Spirit;
         private menuStart: Spirit;
         private menuLoad: Spirit;
@@ -18,7 +19,8 @@ module game.stage {
             this.surface = this.context.getSurfaceDevice().createBasic();
             this.surface.showFPS();
 
-            this.logo = this.surface.createText('FIRE EMBLUM II', '3em Calibri').placeTo(36, 45);
+            this.flame = this.surface.createFlame(100, 300).placeTo(45, 30);
+            this.logo = this.surface.createText('FIRE EMBLUM II', '3em Calibri').placeTo(35, 42);
             this.menuStart = this.surface.createText('START', '1.5em Calibri').placeTo(48, 60).tap(() => { this.onNewGame() });
             this.menuLoad = this.surface.createText('LOAD', '1.5em Calibri').placeTo(48, 65).tap(() => { this.onLoadGame() });
         }
@@ -34,8 +36,8 @@ module game.stage {
         }
 
         private onNewGame(): void {
-            //BgmService.instance.playMusic('/effect/game-start.mp3');
-            //this.menuStart.blink(3000).then(() => { this.onNewGame2() });
+            this.context.getSoundService().playEffect('/effect/game-start.mp3');
+            this.menuStart.blink(3000,() => { this.onNewGame2() });
         }
 
         private onNewGame2(): void {
@@ -49,6 +51,7 @@ module game.stage {
 
         private onLoadGame(): void {
             // TODO:
+            console.log('onLoadGame');
         }
     }
 }   

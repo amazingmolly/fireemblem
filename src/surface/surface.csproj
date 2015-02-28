@@ -22,8 +22,10 @@
       <Link>main\core.d.ts</Link>
     </TypeScriptCompile>
     <TypeScriptCompile Include="main\surface\FPS.ts" />
+    <TypeScriptCompile Include="main\surface\spirit\Blinker.ts" />
     <TypeScriptCompile Include="main\surface\spirit\Spirit.ts" />
     <TypeScriptCompile Include="main\surface\spirit\BasicSpirit.ts" />
+    <TypeScriptCompile Include="main\surface\spirit\FlameSpirit.ts" />
     <TypeScriptCompile Include="main\surface\spirit\TextSpirit.ts" />
     <TypeScriptCompile Include="main\surface\TileSurface.ts" />
     <TypeScriptCompile Include="main\surface\BasicSurface.ts" />

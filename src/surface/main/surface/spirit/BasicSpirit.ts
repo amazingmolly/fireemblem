@@ -1,9 +1,13 @@
 ﻿/// <reference path="Spirit.ts" />
+/// <reference path="Blinker.ts" />
 
 module surface.spirit {
     export class BasicSpirit implements Spirit {
+        protected context: CanvasRenderingContext2D;
         protected x: number;
         protected y: number;
+        protected tapCallback: Function;
+        protected blinker: Blinker = new Blinker();
 
         public placeTo(x: number, y: number): Spirit {
             this.x = x;
@@ -11,12 +15,39 @@ module surface.spirit {
             return this;
         }
         public tap(callback: Function): Spirit {
-            // TODO:
+            this.tapCallback = callback;
             return this;
         }
 
-        public draw(context: CanvasRenderingContext2D): void {
+        public init(context: CanvasRenderingContext2D): Spirit {
+            this.context = context;
+            return this;
+        }
+
+        public blink(timeout: number, callback: Function): Spirit {
+            this.blinker.enable();
+            window.setTimeout(() => {
+                this.blinker.disable();
+                callback();
+            }, timeout);
+            return this;
+        }
+
+        public draw(): void {
             throw new Error('Cannot call basic spirit::draw directly');
+        }
+
+        public handleMouseDownLeft(x: number, y: number): void {
+            // TODO:
+        }
+        public handleMouseDownRight(x: number, y: number): void {
+            // TODO:
+        }
+
+        protected fireTap(): void {
+            if (this.tapCallback) {
+                this.tapCallback();
+            }
         }
     }
 } 

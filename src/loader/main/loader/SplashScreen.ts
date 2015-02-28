@@ -91,7 +91,7 @@ module loader {
         }
 
         private onProgressReport(e: HttpBotEvent): void {
-            this.progress = `Loading ${e.target} (${e.loaded / e.total * 100}%)...`;
+            this.progress = `Loading ${e.target} (${Math.round(e.loaded / e.total * 100)}%)...`;
         }
 
         private onDownloadError(e: HttpBotEvent): void {

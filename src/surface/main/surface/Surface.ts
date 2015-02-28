@@ -6,7 +6,10 @@ module surface {
     export interface Surface {
         render(): void;
         destory(): void;
+
         showFPS(show?: boolean): void;
+
         createText(text: string, font?: string, style?: string): Spirit;
+        createFlame(width: number, height: number): Spirit;
     }
 }
