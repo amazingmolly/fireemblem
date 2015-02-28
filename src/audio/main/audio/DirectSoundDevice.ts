@@ -3,7 +3,6 @@
 
 module audio {
     export class DirectSoundDevice {
-        public static instance = new DirectSoundDevice();
         private context: AudioContext;
 
         constructor() {

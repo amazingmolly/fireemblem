@@ -35,8 +35,6 @@
     <TypeScriptCompile Include="main\game\save\StateService.ts" />
     <TypeScriptCompile Include="main\game\misc\SoundService.ts" />
     <TypeScriptCompile Include="main\game\misc\ResolutionMonitor.ts" />
-    <TypeScriptCompile Include="main\game\misc\ResourceService.ts" />
-    <TypeScriptCompile Include="main\game\misc\SurfaceHolder.ts" />
     <TypeScriptCompile Include="main\game\stage\Dungeon.ts" />
     <TypeScriptCompile Include="main\game\stage\Continent.ts" />
     <TypeScriptCompile Include="main\game\stage\Battlefield.ts" />

@@ -3,11 +3,13 @@
     import DirectSoundDevice = audio.DirectSoundDevice;
 
     export class SoundService {
+        private device: DirectSoundDevice;
         private context: GameContext;
         private playingMusic: Sound;
 
         public constructor(context: GameContext) {
             this.context = context;
+            this.device = new DirectSoundDevice();
         }
 
         public playMusic(name: string): void {
@@ -23,7 +25,7 @@
         }
 
         private get(name: string, loop: boolean): Sound {
-            return DirectSoundDevice.instance.createSound(this.context.getManifest().get(name), name, loop);
+            return this.device.createSound(this.context.getManifest().get(name), name, loop);
         }
     }
 } 
