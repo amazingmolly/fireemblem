@@ -20,7 +20,7 @@ module game.stage {
             this.surface.showFPS();
 
             this.flame = this.surface.createFlame(100, 300).placeTo(45, 30);
-            this.logo = this.surface.createText('FIRE EMBLUM II', '3em Calibri').placeTo(35, 42);
+            this.logo = this.surface.createText('FIRE EMBLEM II', '3em Calibri').placeTo(35, 42);
             this.menuStart = this.surface.createText('START', '1.5em Calibri').placeTo(48, 60).tap(() => { this.onNewGame() });
             this.menuLoad = this.surface.createText('LOAD', '1.5em Calibri').placeTo(48, 65).tap(() => { this.onLoadGame() });
         }

@@ -18,13 +18,13 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="favicon.ico" />
+    <Content Include="main\res\favicon.ico" />
     <Content Include="index.html" />
     <Content Include="main\artifact\avatar\ally.svg" />
     <Content Include="main\artifact\avatar\enemy.svg" />
     <Content Include="main\artifact\bgm\ally.mp3" />
     <Content Include="main\artifact\bgm\main-menu.mp3" />
-    <Content Include="main\bg\wall.jpg" />
+    <Content Include="main\res\wall.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="main\artifact\character\00.svg" />
