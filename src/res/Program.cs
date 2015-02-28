@@ -23,6 +23,11 @@ namespace Noria.FireEmblem.Resource
             res["files"] = files.Length;
             res["content"] = new JObject();
 
+            if (File.Exists(artifact))
+            {
+                File.Delete(artifact);
+            }
+
             var offset = 0;
             using (var bs = new BinaryWriter(File.OpenWrite(artifact)))
             {
@@ -35,6 +40,7 @@ namespace Noria.FireEmblem.Resource
                         // change sourceMap
                         buff = ReadAndUpdateSourceMap(file);
                         bs.Write(buff);
+                        Console.WriteLine("Processing {0}", file);
 
                         // test
                         //File.WriteAllBytes(file + ".cc", buff);
@@ -53,7 +59,7 @@ namespace Noria.FireEmblem.Resource
 
             File.WriteAllText(manifest, res.ToString());
 
-            Console.WriteLine("done.");
+            Console.WriteLine("Done, total size={0}", offset);
         }
 
         // change sourceMap from /*.map to /main/*.map

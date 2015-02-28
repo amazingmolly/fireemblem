@@ -2,7 +2,6 @@
 /// <reference path="FileHelper.ts" />
 
 module io {
-
     export interface ManifestToken {
         version: string;
         name: string;
@@ -56,8 +55,15 @@ module io {
         }
 
         public getList(path: string): any[] {
-            // TODO:
-            return [];
+            var list = [];
+
+            for (var key in this.content) {
+                if (key.indexOf(path) != -1) {
+                    list.push(this.content[key]);
+                }
+            }
+
+            return list;
         }
 
         private loadContent(): void {

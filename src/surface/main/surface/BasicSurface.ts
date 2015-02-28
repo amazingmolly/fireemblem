@@ -53,6 +53,14 @@ module surface {
             return spirit;
         }
 
+        public createSpirit(data: string): Spirit {
+            throw new Error('Cannot create spirit ojbect from BasicSurface');
+        }
+
+        public createMap(a: number, b: number, map: number[], data: string[]): Spirit {
+            throw new Error('Cannot create map ojbect from BasicSurface');
+        }
+
         public render(): void {
             if (this.dead) {
                 return;

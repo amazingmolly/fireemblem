@@ -118,7 +118,6 @@ module loader {
             this.progress = 'Initializing game...';
 
             [
-                '/bin/core.js',
                 '/bin/surface.js',
                 '/bin/audio.js',
                 '/bin/scene.js',

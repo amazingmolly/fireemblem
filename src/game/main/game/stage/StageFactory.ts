@@ -11,7 +11,7 @@ module game.stage {
                 case 'menu': return new Menu();
                 //case 'continent': return new Continent();
                 //case 'dungeon': return new Dungeon();
-                //case 'battlefield': return new Battlefield();
+                case 'battlefield': return new Battlefield();
                 default: throw new Error(`Unknown stage of ${name}`);
             }
         }

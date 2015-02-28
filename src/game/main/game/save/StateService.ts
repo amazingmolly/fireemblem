@@ -7,7 +7,7 @@ module game.save {
 
     export class StateService {
         private context: GameContext;
-        
+
         public constructor(context: GameContext) {
             this.context = context;
         }
@@ -17,6 +17,26 @@ module game.save {
         }
         public load(): void {
 
+        }
+
+        public get(name: string): any {
+            // TODO:
+            switch (name) {
+                case 'ally_force':
+                    return JSON.parse(this.context.getManifest().get('/hero/ally.json'));
+                case 'enemy_force':
+                    return JSON.parse(this.context.getManifest().get('/hero/enemy.json'));
+                default:
+                    throw new Error('Unknown request to StateService');
+            }
+        }
+
+        public nextStage(): Stage {
+            // TODO:
+
+            var stage = StageFactory.create('battlefield');
+            stage.init('/chapter/01.json', this.context);
+            return stage;
         }
 
         public getStage(): Stage {

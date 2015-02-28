@@ -11,5 +11,7 @@ module surface {
 
         createText(text: string, font?: string, style?: string): Spirit;
         createFlame(width: number, height: number): Spirit;
+        createSpirit(data: string): Spirit;
+        createMap(a: number, b: number, map: number[], data: string[]): Spirit;
     }
 }

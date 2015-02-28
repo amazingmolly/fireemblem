@@ -1,62 +1,104 @@
-﻿//module game.stage {
-//    import DirectSurfaceDevice = surface.DirectSurfaceDevice;
+﻿module game.stage {
+    import Surface = surface.Surface;
+    import Spirit = surface.spirit.Spirit;
+    import ArrayUtil = core.ArrayUtil;
 
-//    export class Battlefield implements Stage {
-//        public init(name: string, device: DirectSurfaceDevice): void {
-//            this.surface = device.createTileSystem(this.tileWidth, this.tileHeight);
-//            this.surface.enableFPS();
+    export class Battlefield implements Stage {
+        private context: GameContext;
+        private surface: Surface;
 
-//            this.chapter = this.context.res.get(name);
+        private chapter: any;
+        private ally: any[];
+        private enemy: any[];
+        private ally_force: any[];
+        private enemy_force: any[];
 
-//            this.initMap(this.chapter.map);
+        public init(name: string, context: GameContext): void {
+            this.context = context;
 
-//            this.initAlley(this.chapter.ally, this.context.state.get('ally_force'));
-//            this.initEnemy(this.chapter.enemy, this.chapter.enemy_force);
+            this.surface = context.getSurfaceDevice().createTileSystem();
+            this.surface.showFPS();
 
-//            this.initScript(this.chapter.script);
+            this.chapter = JSON.parse(this.context.getManifest().get(name));
 
-//            this.state = [
-//                new Idling(),
-//                new Thinking(),
-//                new Moving(),
-//                new Deciding(),
-//                new Battling(),
-//                new Trading(),
-//                new Postmortem(),
-//                new ScriptAction(),
-//                new EnemyAction()
-//            ];
-//        }
-//        public start(): void {
-//            BgmService.instance.playMusic('/bgm/ally.mp3');
-//            this.surface.render();
-//        }
-//        public stop(): void {
-//            this.surface.destory();
-//        }
+            this.initMap(this.chapter.size[0], this.chapter.size[1], this.chapter.map);
 
-//        private initAlley(ally: any[], force: any[]): void {
-//            this.ally = core.ArrayUtil.collect(ally,(e) => {
-//                var hero = {
-//                    x: e.position[0],
-//                    y: e.position[1],
-//                    ref: e.ref,
-//                    data: force[e.ref],
-//                    spirit: null,
-//                    avatar: null
-//                };
-//                hero.spirit = this.surface.createSpirit(this.context.res.get(hero.data.character)).
-//                    placeTo(hero.x, hero.y).
-//                    flip(200, [0, 1, 2]).
-//                    tap(() => { this.getState().onTapAlly(hero) });
-//                hero.avatar = this.surface.createSpirit(this.context.res.get(hero.data.avatar), 2).hide();
+            this.initAlly(this.chapter.ally, this.ally_force = this.context.getGameState().get('ally_force'));
+            this.initEnemy(this.chapter.enemy, this.enemy_force = this.context.getGameState().get('enemy_force'));
 
-//                return hero;
-//            });
-//        }
+            //this.initScript(this.chapter.script);
 
-//        private onTapAlly(hero): void {
+            //this.state = [
+            //    new Idling(),
+            //    new Thinking(),
+            //    new Moving(),
+            //    new Deciding(),
+            //    new Battling(),
+            //    new Trading(),
+            //    new Postmortem(),
+            //    new ScriptAction(),
+            //    new EnemyAction()
+            //];
+        }
+        public start(): void {
+            this.context.getSoundService().playMusic('/bgm/ally.mp3');
+            this.surface.render();
+        }
+        public stop(): void {
+            this.surface.destory();
+        }
 
-//        }
-//    }
-//}   
+        private initAlly(meta: any[], force: any[]): void {
+            this.ally = ArrayUtil.collect(meta,(e) => {
+                var hero = {
+                    x: e.position[0],
+                    y: e.position[1],
+                    ref: e.ref,
+                    data: force[e.ref],
+                    spirit: null,
+                    avatar: null
+                };
+                hero.spirit = this.surface.createSpirit(this.context.getManifest().get(this.makeCharacter(hero.data.character))).
+                    placeTo(hero.x, hero.y).
+                    flip(200, [0, 1, 2]);
+                //tap(() => { this.getState().onTapAlly(hero) });
+                //hero.avatar = this.surface.createImage(this.context.getManifest().get(hero.data.avatar), 15, 15).hide();
+
+                return hero;
+            });
+        }
+
+        private makeCharacter(id: number): string {
+            var s = id < 10 ? `0${id}` : id.toString();
+            return `/character/${s}.svg`;
+        }
+
+        private initEnemy(meta: any[], force: any[]): void {
+            this.enemy = ArrayUtil.collect(meta,(e) => {
+                var hero = {
+                    x: e.position[0],
+                    y: e.position[1],
+                    ref: e.ref,
+                    data: force[e.ref],
+                    spirit: null,
+                    avatar: null
+                };
+                hero.spirit = this.surface.createSpirit(this.context.getManifest().get(this.makeCharacter(hero.data.character))).
+                    placeTo(hero.x, hero.y).
+                    flip(200, [0, 1, 2]);
+                //tap(() => { this.getState().onTapAlly(hero) });
+                //hero.avatar = this.surface.createImage(this.context.getManifest().get(hero.data.avatar), 15, 15).hide();
+
+                return hero;
+            });
+        }
+
+        private initMap(a: number, b: number, map: number[]): void {
+            this.surface.createMap(a, b, map, this.context.getManifest().getList('/tile'));
+        }
+
+        private onTapAlly(hero): void {
+
+        }
+    }
+}   

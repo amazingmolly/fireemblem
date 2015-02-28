@@ -50,6 +50,15 @@
   <ItemGroup>
     <Folder Include="main\artifact\bin\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="main\artifact\hero\enemy.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="main\artifact\dungeon\01.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="main\artifact\dungeon\02.json" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>

@@ -26,9 +26,6 @@ module game.stage {
         }
         public start(): void {
             this.context.getSoundService().playMusic('/bgm/main-menu.mp3');
-            //BgmService.instance.playMusic('/bgm/main-menu.mp3');
-            //this.surface.render();
-            //console.log('Start menu stage');
             this.surface.render();
         }
         public stop(): void {
@@ -42,11 +39,8 @@ module game.stage {
 
         private onNewGame2(): void {
             // TODO: it's supposed to switch to Dungeon#1 village
-            console.log('Game is about to start!');
-            //var stage = StageFactory.create('battlefield');
-            //stage.init('/chapter/01.json', SurfaceHolder.instance);
-            //this.stop();
-            //stage.start();
+            this.stop();
+            this.context.getGameState().nextStage().start();
         }
 
         private onLoadGame(): void {

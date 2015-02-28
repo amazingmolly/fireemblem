@@ -1,7 +1,7 @@
 ﻿module surface.spirit {
     export class Blinker {
+        private static start: number = new Date().getTime();
         private enabled: boolean = false;
-        private start: number = new Date().getTime();
 
         public enable(): void {
             this.enabled = true;
@@ -14,7 +14,7 @@
                 return false;
             }
 
-            var c = Math.floor((new Date().getTime() - this.start) % 300 / 100);
+            var c = Math.floor((new Date().getTime() - Blinker.start) % 300 / 100);
             return c == 2;
         }
     }

@@ -33,8 +33,12 @@ module surface.spirit {
             return this;
         }
 
+        public flip(timeout: number, scope: number[]): Spirit {
+            throw new Error('Cannot call BasicSpirit::flip directly');
+        }
+
         public draw(): void {
-            throw new Error('Cannot call basic spirit::draw directly');
+            throw new Error('Cannot call BasicSpirit::draw directly');
         }
 
         public handleMouseDownLeft(x: number, y: number): void {

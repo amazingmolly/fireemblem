@@ -18,6 +18,9 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="..\core\main\core.d.ts">
+      <Link>main\core.d.ts</Link>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="..\core\main\filesystem.d.ts">
       <Link>main\filesystem.d.ts</Link>
     </TypeScriptCompile>
@@ -27,6 +30,12 @@
     <TypeScriptCompile Include="main\io\FileHelper.ts" />
     <TypeScriptCompile Include="main\io\Manifest.ts" />
     <TypeScriptCompile Include="main\io\Storage.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\core\core.csproj">
+      <Project>{9ea86e95-f2d0-4570-8cc4-56f0ee64517e}</Project>
+      <Name>core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>

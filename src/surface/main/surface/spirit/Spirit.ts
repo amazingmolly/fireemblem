@@ -3,6 +3,7 @@
         placeTo(x: number, y: number): Spirit;
         blink(timeout: number, callback: Function): Spirit;
         tap(callback: Function): Spirit;
+        flip(timeout: number, scope: number[]): Spirit;
 
         init(context: CanvasRenderingContext2D): Spirit;
         draw(): void;

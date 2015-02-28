@@ -63,5 +63,11 @@
     <TypeScriptCompile Include="main\loader\HttpBot.ts" />
     <TypeScriptCompile Include="main\loader\SplashScreen.ts" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\io\io.csproj">
+      <Project>{42f6ec0f-6c2a-4cab-9d97-b99787b9f562}</Project>
+      <Name>io</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>
