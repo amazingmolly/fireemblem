@@ -5,7 +5,7 @@ module game.save {
     import Stage = stage.Stage;
     import StageFactory = stage.StageFactory;
 
-    export class StateService {
+    export class SavingService {
         private context: GameContext;
 
         public constructor(context: GameContext) {

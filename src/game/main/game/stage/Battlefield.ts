@@ -1,23 +1,36 @@
-﻿module game.stage {
+﻿/// <reference path="../state/Hero.ts" />
+/// <reference path="../state/StateService.ts" />
+
+module game.stage {
     import Surface = surface.Surface;
     import Spirit = surface.spirit.Spirit;
     import ArrayUtil = core.ArrayUtil;
+    import StateService = state.StateService;
+    import Hero = state.Hero;
+    import HeroData = state.HeroData;
+    import StateContext = state.StateContext;
 
     export class Battlefield implements Stage {
         private context: GameContext;
         private surface: Surface;
 
         private chapter: any;
-        private ally: any[];
-        private enemy: any[];
-        private ally_force: any[];
-        private enemy_force: any[];
+        private ally: Hero[];
+        private enemy: Hero[];
+        private ally_force: HeroData[];
+        private enemy_force: HeroData[];
+
+        private state: StateService;
 
         public init(name: string, context: GameContext): void {
             this.context = context;
 
             this.surface = context.getSurfaceDevice().createTileSystem();
             this.surface.showFPS();
+
+            // TODO: remove hardcode value (x,y)
+            this.surface.onMouseDownLeft((x, y, w, h) => this.state.current().handleInput({ x: x, y: y }, { x: w / 20, y: h / 15 }));
+            this.surface.onMouseDownRight(() => this.state.current().handleCancel());
 
             this.chapter = JSON.parse(this.context.getManifest().get(name));
 
@@ -26,37 +39,28 @@
             this.initAlly(this.chapter.ally, this.ally_force = this.context.getGameState().get('ally_force'));
             this.initEnemy(this.chapter.enemy, this.enemy_force = this.context.getGameState().get('enemy_force'));
 
-            //this.initScript(this.chapter.script);
+            //this.initEvent(this.chapter.script);
 
-            //this.state = [
-            //    new Idling(),
-            //    new Thinking(),
-            //    new Moving(),
-            //    new Deciding(),
-            //    new Battling(),
-            //    new Trading(),
-            //    new Postmortem(),
-            //    new ScriptAction(),
-            //    new EnemyAction()
-            //];
+            this.state = new StateService();
+            this.state.enter('normal', new StateContext(this.ally));
         }
+
         public start(): void {
             this.context.getSoundService().playMusic('/bgm/ally.mp3');
             this.surface.render();
         }
+
         public stop(): void {
             this.surface.destory();
         }
 
-        private initAlly(meta: any[], force: any[]): void {
+        private initAlly(meta: any[], force: HeroData[]): void {
             this.ally = ArrayUtil.collect(meta,(e) => {
-                var hero = {
+                var hero: Hero = {
                     x: e.position[0],
                     y: e.position[1],
                     ref: e.ref,
                     data: force[e.ref],
-                    spirit: null,
-                    avatar: null
                 };
                 hero.spirit = this.surface.createSpirit(this.context.getManifest().get(this.makeCharacter(hero.data.character))).
                     placeTo(hero.x, hero.y).
@@ -100,5 +104,6 @@
         private onTapAlly(hero): void {
 
         }
+
     }
 }   

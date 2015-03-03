@@ -22,6 +22,9 @@ module surface {
         private mouseup: MouseEventListener;
         private mousemove: MouseEventListener;
 
+        protected mousedownleft: MouseDownLeftCallback;
+        protected mousedownright: MouseDownRightCallback;
+
         private static fps: FPS = new FPS();
 
 
@@ -97,10 +100,10 @@ module surface {
         protected onMouseDown(e: MouseEvent) {
             if (e.button == 0) {
                 e.cancelBubble = true;
-                this.onMouseDownLeft(e.x, e.y);
+                this.handleMouseDownLeft(e.x, e.y);
             } else if (e.button == 2) {
                 e.cancelBubble = true;
-                this.onMouseDownRight(e.x, e.y);
+                this.handleMouseDownRight(e.x, e.y);
             }
         }
 
@@ -112,16 +115,34 @@ module surface {
             // TODO:
         }
 
-        private onMouseDownLeft(x: number, y: number): void {
+        protected handleMouseDownLeft(x: number, y: number): void {
             x -= this.context.canvas.offsetLeft;
             y -= this.context.canvas.offsetTop;
+
             this.spirits.forEach((e) => { e.handleMouseDownLeft(x, y) });
+
+            if (this.mousedownleft) {
+                this.mousedownleft(x, y, this.context.canvas.offsetWidth, this.context.canvas.offsetHeight);
+            }
         }
 
-        private onMouseDownRight(x: number, y: number): void {
+        protected handleMouseDownRight(x: number, y: number): void {
             x -= this.context.canvas.offsetLeft;
             y -= this.context.canvas.offsetTop;
+
             this.spirits.forEach((e) => { e.handleMouseDownRight(x, y) });
+
+            if (this.mousedownright) {
+                this.mousedownright();
+            }
         }
+
+        public onMouseDownLeft(callback: MouseDownLeftCallback): void {
+            this.mousedownleft = callback;
+        }
+        public onMouseDownRight(callback: MouseDownRightCallback): void {
+            this.mousedownright = callback;
+        }
+
     }
 }

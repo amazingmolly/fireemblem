@@ -32,7 +32,7 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="main\game\App.ts" />
     <TypeScriptCompile Include="main\game\GameContext.ts" />
-    <TypeScriptCompile Include="main\game\save\StateService.ts" />
+    <TypeScriptCompile Include="main\game\save\SavingService.ts" />
     <TypeScriptCompile Include="main\game\misc\SoundService.ts" />
     <TypeScriptCompile Include="main\game\misc\ResolutionMonitor.ts" />
     <TypeScriptCompile Include="main\game\stage\Dungeon.ts" />
@@ -41,6 +41,13 @@
     <TypeScriptCompile Include="main\game\stage\Menu.ts" />
     <TypeScriptCompile Include="main\game\stage\Stage.ts" />
     <TypeScriptCompile Include="main\game\stage\StageFactory.ts" />
+    <TypeScriptCompile Include="main\game\state\Hero.ts" />
+    <TypeScriptCompile Include="main\game\state\PathFindingState.ts" />
+    <TypeScriptCompile Include="main\game\state\NormalState.ts" />
+    <TypeScriptCompile Include="main\game\state\State.ts" />
+    <TypeScriptCompile Include="main\game\state\StateContext.ts" />
+    <TypeScriptCompile Include="main\game\state\StateService.ts" />
+    <TypeScriptCompile Include="main\game\util\TileUtil.ts" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ai\ai.csproj">
