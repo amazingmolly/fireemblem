@@ -21,6 +21,7 @@
     <TypeScriptCompile Include="main\core\ArrayUtil.ts" />
     <TypeScriptCompile Include="main\core\HashMap.ts" />
     <TypeScriptCompile Include="main\core\Logger.ts" />
+    <TypeScriptCompile Include="main\core\TileUtil.ts" />
     <TypeScriptCompile Include="main\filesystem.d.ts" />
     <TypeScriptCompile Include="main\filewriter.d.ts" />
     <TypeScriptCompile Include="main\MediaStream.d.ts" />

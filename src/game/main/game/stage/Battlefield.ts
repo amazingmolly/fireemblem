@@ -19,6 +19,7 @@ module game.stage {
         private enemy: Hero[];
         private ally_force: HeroData[];
         private enemy_force: HeroData[];
+        private shading: Spirit;
 
         private state: StateService;
 
@@ -36,13 +37,15 @@ module game.stage {
 
             this.initMap(this.chapter.size[0], this.chapter.size[1], this.chapter.map);
 
+            this.shading = this.surface.createShading();
+
             this.initAlly(this.chapter.ally, this.ally_force = this.context.getGameState().get('ally_force'));
             this.initEnemy(this.chapter.enemy, this.enemy_force = this.context.getGameState().get('enemy_force'));
 
             //this.initEvent(this.chapter.script);
 
             this.state = new StateService();
-            this.state.enter('normal', new StateContext(this.ally));
+            this.state.enter('normal', { ally: this.ally, enemy: this.enemy, shading: this.shading });
         }
 
         public start(): void {

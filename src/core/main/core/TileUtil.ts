@@ -1,4 +1,4 @@
-﻿module game.util {
+﻿module core {
 
     export interface Point {
         x: number;

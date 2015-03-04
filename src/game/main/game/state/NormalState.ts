@@ -2,9 +2,9 @@
 /// <reference path="StateService.ts" />
 
 module game.state {
-    import TileUtil = util.TileUtil;
-    import Point = util.Point;
-    import Size = util.Size;
+    import TileUtil = core.TileUtil;
+    import Point = core.Point;
+    import Size = core.Size;
 
     export class NormalState implements State {
         private service: StateService;
@@ -23,7 +23,7 @@ module game.state {
 
 
             var hero: Hero = null,
-                ally: Hero[] = this.context.data;
+                ally: Hero[] = this.context.ally;
             for (var i = 0; i < ally.length; i++) {
                 if (ally[i].x == pos.x && ally[i].y == pos.y) {
                     hero = ally[i];
@@ -32,7 +32,8 @@ module game.state {
             }
 
             if (hero != null) {
-                this.service.enter('pathfinding', new StateContext({ selected: hero, ally: ally }));
+                this.context.selected = hero;
+                this.service.enter('pathfinding', this.context);
             }
         }
 

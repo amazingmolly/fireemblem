@@ -2,9 +2,9 @@
 /// <reference path="StateService.ts" />
 
 module game.state {
-    import TileUtil = util.TileUtil;
-    import Point = util.Point;
-    import Size = util.Size;
+    import TileUtil = core.TileUtil;
+    import Point = core.Point;
+    import Size = core.Size;
 
     export class PathFindingState implements State {
         private service: StateService;
@@ -17,8 +17,10 @@ module game.state {
         public enter(context: StateContext): void {
             this.context = context;
             //
-            var hero: Hero = this.context.data.selected;
+            var hero = this.context.selected;
             hero.spirit.flip(200, [8, 9]);
+            // shading
+            this.context.shading.update(this.calculateShadingArea());
         }
 
         public handleInput(pos: Point, tile: Size): void {
@@ -27,11 +29,31 @@ module game.state {
         }
         public handleCancel(): void {
             // 
-            var hero: Hero = this.context.data.selected;
+            var hero = this.context.selected;
             hero.spirit.flip(200, [0, 1, 2]);
+            // shading
+            this.context.shading.update([]);
 
+            this.context.selected = null;
+            this.service.enter('normal', this.context);
+        }
 
-            this.service.enter('normal', new StateContext(this.context.data.ally));
+        private calculateShadingArea(): Point[] {
+            var area: Point[] = [],
+                hero = this.context.selected,
+                i: number, j: number, t = 4;
+
+            // TODO: polish code later
+            for (i = -t; i <= t; i++) {
+                for (j = t - Math.abs(i); j >= 0; j--) {
+                    area.push({ x: hero.x + i, y: hero.y + j });
+                    if (j > 0) {
+                        area.push({ x: hero.x + i, y: hero.y - j });
+                    }
+                }
+            }
+
+            return area;
         }
     }
 }  

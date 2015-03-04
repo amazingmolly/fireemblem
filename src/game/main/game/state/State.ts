@@ -1,9 +1,8 @@
 ﻿/// <reference path="StateContext.ts" />
-/// <reference path="../util/TileUtil.ts" />
 
 module game.state {
-    import Point = util.Point;
-    import Size = util.Size;
+    import Point = core.Point;
+    import Size = core.Size;
 
     export interface State {
         enter(context: StateContext): void;

@@ -51,10 +51,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="post-build.bat" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>$(TargetPath) $(SolutionDir)artifact\main\artifact $(SolutionDir)artifact\main\manifest.json $(SolutionDir)artifact\main\artifact.bin</PostBuildEvent>
+    <PostBuildEvent>call "$(ProjectDir)post-build" "$(SolutionDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

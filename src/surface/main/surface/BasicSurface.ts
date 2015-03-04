@@ -1,12 +1,14 @@
 ﻿/// <reference path="Surface.ts" />
 /// <reference path="spirit/FlameSpirit.ts" />
 /// <reference path="spirit/TextSpirit.ts" />
+/// <reference path="filter/ShadingSpirit.ts" />
 /// <reference path="FPS.ts" />
 
 module surface {
     import Spirit = spirit.Spirit;
     import TextSpirit = spirit.TextSpirit;
     import FlameSpirit = spirit.FlameSpirit;
+    import ShadingSpirit = filter.ShadingSpirit;
 
     interface MouseEventListener {
         (ev: MouseEvent): any;
@@ -142,6 +144,12 @@ module surface {
         }
         public onMouseDownRight(callback: MouseDownRightCallback): void {
             this.mousedownright = callback;
+        }
+
+        public createShading(): Spirit {
+            var spirit = new ShadingSpirit().init(this.context);
+            this.spirits.push(spirit);
+            return spirit;
         }
 
     }

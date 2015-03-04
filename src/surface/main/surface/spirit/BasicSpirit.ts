@@ -48,6 +48,10 @@ module surface.spirit {
             // TODO:
         }
 
+        public update(data: any): Spirit {
+            return this;
+        }
+
         protected fireTap(): void {
             if (this.tapCallback) {
                 this.tapCallback();
