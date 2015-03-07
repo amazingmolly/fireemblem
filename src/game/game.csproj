@@ -42,6 +42,7 @@
     <TypeScriptCompile Include="main\game\stage\Stage.ts" />
     <TypeScriptCompile Include="main\game\stage\StageFactory.ts" />
     <TypeScriptCompile Include="main\game\state\Hero.ts" />
+    <TypeScriptCompile Include="main\game\state\MovingState.ts" />
     <TypeScriptCompile Include="main\game\state\PathFindingState.ts" />
     <TypeScriptCompile Include="main\game\state\NormalState.ts" />
     <TypeScriptCompile Include="main\game\state\State.ts" />

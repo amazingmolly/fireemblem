@@ -1,4 +1,4 @@
-﻿module surface.spirit {
+﻿module surface.effect {
     export class Fliper {
         private static start: number = new Date().getTime();
         private timeout: number;

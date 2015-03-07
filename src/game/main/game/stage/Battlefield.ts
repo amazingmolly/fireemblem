@@ -30,7 +30,7 @@ module game.stage {
             this.surface.showFPS();
 
             // TODO: remove hardcode value (x,y)
-            this.surface.onMouseDownLeft((x, y, w, h) => this.state.current().handleInput({ x: x, y: y }, { x: w / 20, y: h / 15 }));
+            this.surface.onMouseDownLeft((x, y, w, h) => this.state.current().handleInput({ x: x, y: y }, { width: w / 20, height: h / 15 }));
             this.surface.onMouseDownRight(() => this.state.current().handleCancel());
 
             this.chapter = JSON.parse(this.context.getManifest().get(name));

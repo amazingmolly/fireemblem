@@ -1,11 +1,11 @@
 ﻿module core {
-    export interface ArrayCollectAction {
-        (element: any): any;
+    export interface ArrayCollectAction<T, K> {
+        (element: T): K;
     }
 
     export class ArrayUtil {
-        public static collect(array: any[], action: ArrayCollectAction): any[]{
-            var list = [];
+        public static collect<T, K>(array: T[], action: ArrayCollectAction<T, K>): K[] {
+            var list: K[] = [];
             array.forEach((e) => { list.push(action(e)) });
             return list;
         }

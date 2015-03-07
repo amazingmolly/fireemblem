@@ -1,7 +1,10 @@
 ﻿/// <reference path="Spirit.ts" />
-/// <reference path="Blinker.ts" />
+/// <reference path="../effect/Blinker.ts" />
 
 module surface.spirit {
+    import Vector = core.Vector;
+    import Blinker = effect.Blinker;
+
     export class BasicSpirit implements Spirit {
         protected context: CanvasRenderingContext2D;
         protected x: number;
@@ -35,6 +38,13 @@ module surface.spirit {
 
         public flip(timeout: number, scope: number[]): Spirit {
             throw new Error('Cannot call BasicSpirit::flip directly');
+        }
+
+        public animate(velocity: number, path: Vector[]): Spirit {
+            throw new Error('Cannot call BasicSpirit::animate directly');
+        }
+        public stopAnimate(cancel: boolean): Spirit {
+            throw new Error('Cannot call BasicSpirit::stopAnimate directly');
         }
 
         public draw(): void {

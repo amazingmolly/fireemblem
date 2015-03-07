@@ -1,6 +1,7 @@
 ﻿/// <reference path="State.ts" />
-/// <reference path="PathFindingState.ts" />
 /// <reference path="NormalState.ts" />
+/// <reference path="PathFindingState.ts" />
+/// <reference path="MovingState.ts" />
 /// <reference path="StateContext.ts" />
 
 module game.state {
@@ -12,6 +13,7 @@ module game.state {
             this.states = {
                 'normal': new NormalState(this),
                 'pathfinding': new PathFindingState(this),
+                'moving': new MovingState(this),
                 //new Moving(),
                 //new Deciding(),
                 //new Battling(),

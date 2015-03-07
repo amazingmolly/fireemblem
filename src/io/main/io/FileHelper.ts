@@ -49,6 +49,8 @@
                     return { mime: 'image/png', type: BlobStorage.Base64 };
                 case 'jpg':
                     return { mime: 'image/jpeg', type: BlobStorage.Base64 };
+                case 'gif':
+                    return { mime: 'image/gif', type: BlobStorage.Base64 };
                 case 'svg':
                     return { mime: 'image/svg+xml', type: BlobStorage.Base64 };
                 default:
