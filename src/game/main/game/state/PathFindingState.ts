@@ -41,6 +41,7 @@ module game.state {
                     this.context.shading.update([]);
                     this.context.path = this.calculateMovingPath({ x: selected.x, y: selected.y }, pos);
                     this.service.enter('moving', this.context);
+                    this.service.getGameContext().getSoundService().playEffect('/effect/moving.ogg');
                 }
             }
         }

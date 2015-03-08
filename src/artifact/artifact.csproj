@@ -64,6 +64,10 @@
     <Content Include="main\artifact\effect\game-start.ogg" />
     <Content Include="main\artifact\effect\op.ogg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="main\artifact\effect\moving.ogg" />
+    <Content Include="main\artifact\effect\shoot.ogg" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>
