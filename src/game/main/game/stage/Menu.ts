@@ -25,7 +25,7 @@ module game.stage {
             this.menuLoad = this.surface.createText('LOAD', '1.5em Calibri').placeTo(48, 65).tap(() => { this.onLoadGame() });
         }
         public start(): void {
-            this.context.getSoundService().playMusic('/bgm/main-menu.mp3');
+            this.context.getSoundService().playMusic('/bgm/main-menu.ogg');
             this.surface.render();
         }
         public stop(): void {
@@ -33,7 +33,7 @@ module game.stage {
         }
 
         private onNewGame(): void {
-            this.context.getSoundService().playEffect('/effect/game-start.mp3');
+            this.context.getSoundService().playEffect('/effect/game-start.ogg');
             this.menuStart.blink(3000,() => { this.onNewGame2() });
         }
 

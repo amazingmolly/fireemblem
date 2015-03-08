@@ -19,6 +19,7 @@ module game.state {
         }
 
         public enter(context: StateContext): void {
+            //
             this.context = context;
             //
             var hero = this.context.selected;

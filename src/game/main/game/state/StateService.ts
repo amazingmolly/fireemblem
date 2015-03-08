@@ -6,10 +6,13 @@
 
 module game.state {
     export class StateService {
+        private context: GameContext;
         private state: State;
         private states: { [key: string]: State; };
 
-        public constructor() {
+        public constructor(context: GameContext) {
+            this.context = context;
+
             this.states = {
                 'normal': new NormalState(this),
                 'pathfinding': new PathFindingState(this),
@@ -32,6 +35,10 @@ module game.state {
         public enter(which: string, context: StateContext): void {
             this.state = this.states[which];
             this.state.enter(context);
+        }
+
+        public getGameContext(): GameContext {
+            return this.context;
         }
     }
 }  

@@ -44,12 +44,12 @@ module game.stage {
 
             //this.initEvent(this.chapter.script);
 
-            this.state = new StateService();
+            this.state = new StateService(this.context);
             this.state.enter('normal', { ally: this.ally, enemy: this.enemy, shading: this.shading });
         }
 
         public start(): void {
-            this.context.getSoundService().playMusic('/bgm/ally.mp3');
+            this.context.getSoundService().playMusic('/bgm/ally.ogg');
             this.surface.render();
         }
 

@@ -34,6 +34,8 @@ module game.state {
             if (hero != null) {
                 this.context.selected = hero;
                 this.service.enter('pathfinding', this.context);
+                //
+                this.service.getGameContext().getSoundService().playEffect('/effect/op.ogg');
             }
         }
 

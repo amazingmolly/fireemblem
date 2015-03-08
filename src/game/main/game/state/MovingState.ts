@@ -19,6 +19,7 @@ module game.state {
         }
 
         public enter(context: StateContext): void {
+            //
             this.context = context;
             //
             //this.aborted = false;
@@ -30,7 +31,7 @@ module game.state {
 
             //this.oldPos = { x: hero.x, y: hero.y };
 
-            hero.spirit.animate(3, path);
+            hero.spirit.animate(4, path);
 
             //window.setTimeout(() => { this.move(hero, start, path) }, 0);
         }

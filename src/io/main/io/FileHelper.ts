@@ -41,6 +41,8 @@
             switch (extension) {
                 case 'mp3':
                     return { mime: 'audio/mp3', type: BlobStorage.Binary };
+                case 'ogg':
+                    return { mime: 'audio/ogg', type: BlobStorage.Binary };
                 case 'js':
                     return { mime: 'application/javascript', type: BlobStorage.Text };
                 case 'json':

@@ -17,7 +17,7 @@ module io {
         private content: { [key: string]: any; };
 
         public constructor() {
-            Storage.ensureQuota();
+            //Storage.ensureQuota();
             this.content = {};
         }
 
